@@ -41,6 +41,9 @@ class Grass():
         self.random_tick_trigger = random.randint(0, RANDOM_MAX)
         self._logger = logger
 
+    def __str__(self):
+        return f'<cell grass at {self.posx}, {self.posy}>'
+
     def __grow(self):
         if self.growthlevel + GROWTH_RANDOMBOOST * GROWTH_STEP > MAX_GRASS_GROWTH_LEVEL:
             self.growthlevel = MAX_GRASS_GROWTH_LEVEL
@@ -71,6 +74,9 @@ class Animal():
                 self.type, self.maxhealth, health))
 
         self.health = health
+
+    def __str__(self):
+        return f"<animal instance: type: %s, posx: %d, posy: %d, id: %d>"
 
     def tick(self):
         # TODO: Implement tick, hunger and food consumption for animals.
@@ -160,4 +166,15 @@ class Field():
         return cells
 
     def tick(self):
-        self.__tick
+        global global_tick
+        self.logger.info(f'Tick {global_tick} announced for field.')
+        for cell_row in self.__cells:
+            for cell in cell_row:
+                self.logger.info(f'Tick {global_tick} announced to one of the cells')
+                cell.tick()
+        self.logger.debug(f'Tick {global_tick} announcement finished for cells, next animals')
+        for animal in self.__animals:
+            self.logger.info(f'Tick {global_tick} announed to animal {str(animal)}')
+            animal.tick()
+        self.logger.info(f'Tick {global_tick} announcement finished for fields')
+

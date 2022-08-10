@@ -1,6 +1,5 @@
 # encoding: UTF-8
 import random
-from abc import Union
 import nanoid
 import debugging
 
@@ -170,11 +169,14 @@ class Field():
         self.logger.info(f'Tick {global_tick} announced for field.')
         for cell_row in self.__cells:
             for cell in cell_row:
-                self.logger.info(f'Tick {global_tick} announced to one of the cells')
+                self.logger.info(
+                    f'Tick {global_tick} announced to one of the cells')
                 cell.tick()
-        self.logger.debug(f'Tick {global_tick} announcement finished for cells, next animals')
+        self.logger.debug(
+            f'Tick {global_tick} announcement finished for cells, next animals')
         for animal in self.__animals:
-            self.logger.info(f'Tick {global_tick} announed to animal {str(animal)}')
+            self.logger.info(
+                f'Tick {global_tick} announed to animal {str(animal)}')
             animal.tick()
-        self.logger.info(f'Tick {global_tick} announcement finished for fields')
-
+        self.logger.info(
+            f'Tick {global_tick} announcement finished for fields')

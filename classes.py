@@ -8,7 +8,7 @@ import debugging
 # * Defining static values
 #
 
-# ! It's recommended to use Better Commenets
+# ! It's recommended to use Better Comments
 
 NANOID_LENGTH = 21
 

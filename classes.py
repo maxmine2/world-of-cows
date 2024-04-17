@@ -75,7 +75,7 @@ class Animal():
         self.health = health
 
     def __str__(self):
-        return f"<animal instance: type: %s, posx: %d, posy: %d, id: %d>"
+        return f"<animal instance: type: %s, posx: %d, posy: %d, id: %s>" % (type(self), self.posx. self.posy, self.__id)
 
     def tick(self):
         # TODO: Implement tick, hunger and food consumption for animals.
